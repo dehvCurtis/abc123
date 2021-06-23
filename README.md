@@ -1,7 +1,17 @@
 # krkn
 
 ## docker-ayes
-1. searched for latest litecoin image via dockerhub
-2. selected most popular image with 150k+ pulls and 6 stars `uphold/litecoind`
-3. adding to docker-compose file to run the daemon without any modifiers
-4. comparing sha256 digest by getting sha256 checksum from dockerhub and tagging checksum in Dockerfile
+1. Write a Dockerfile to run Litecoin 0.18.1 in a container
+    `complete`
+2. verify the checksum of the downloaded release
+    `verified in Dockerfile image definition`
+3. run as a normal user 
+    `running as litecoin user`
+4. run without any modifiers
+    `Makefile` (incomplete)
+ - should run the daemon
+    `handled by docker-compose.yml`
+ - print its output to the console
+    `handled by docker-compose.yml` 
+5. Build should be security conscious
+    `` (incomplete)
