@@ -1,0 +1,6 @@
+services:
+  litecoin-core:
+    image: uphold/litecoin-core
+    command:
+      -printtoconsole
+      -regtest=1
