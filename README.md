@@ -1,4 +1,4 @@
-# abc123
+# krkn
 
 ## docker-ayes
 1. Write a Dockerfile to run Litecoin 0.18.1 in a container (see `Dockerfile`)
@@ -27,9 +27,9 @@
 
 # Terraform Lovers Unite
 - A role, with no permissions, which can be assumed by users within the same account (`aws_iam_role.tf`, referenced template from Hashicorp https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role)
-- A policy, allowing users / entities to assume the above role 
-- A group, with the above policy attached,
-- A user, belonging to the above group.
+- A policy, allowing users / entities to assume the above role (`aws_iam_user_group_membership.tf`, referenced template from Hashicorp https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_group_membership)
+- A group, with the above policy attached (`aws_iam_user_policy.tf`, referenced template from Hashicorp https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group)
+- A user, belonging to the above group. (`aws_iam_user.tf`, referenced template from Hashicorp https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_group_membership)
 
 # Extra Security
 1. Added `$DOCKER_CONTENT_TRUST` to `.env` file (validates image authenticity)
