@@ -6,7 +6,7 @@ metadata:
     type: local
 spec:
   capacity:
-    storage: 500Mi
+    storage: 5Gi
   hostPath:
     path: "/mnt/data/"
   accessModes:
@@ -22,7 +22,7 @@ spec:
   volumeMode: Filesystem
   resources:
     requests:
-      storage: 500Mi
+      storage: 5Gi
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -41,12 +41,13 @@ spec:
       containers:
       - name: trivy
         image: aquasec/trivy:latest
+        imagePullPolicy: Never
         resources:
           requests:
-            memory: "64Mi"
+            memory: "250Mi"
             cpu: "250m"
           limits:
-            memory: "128Mi"
+            memory: "250Mi"
             cpu: "500m"
         args:
           - image uphold/litecoin-core:0.18.1            

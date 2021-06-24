@@ -13,7 +13,7 @@
 `make build`
 
 # K8s FTW
-1. Write a Kubernetes StatefulSet to run the above, using persistent volume claims and resource limits. (incomplete)
+1. Write a Kubernetes StatefulSet to run the above, using persistent volume claims and resource limits. (Complete. see `*-deployment.yaml`)
 
 # All the Continuouses
 1. Write a simple build and deployment pipeline (I don't have much exp with Travis or Jenkins, so I wrote an Azure Pipeline `azure-pipeline.yaml`)
@@ -32,4 +32,3 @@
 2. Double coverage CVE Scan with `trivy` & `grype` (both output results to terminal)
 3. Verify docker image (added `export DOCKER_CONTENT_TRUST=1` to env vars)
 4. Image should be pulled from private repo (suggestion)
-5. 
