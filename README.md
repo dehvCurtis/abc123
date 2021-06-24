@@ -26,7 +26,7 @@
 1. Solve the problem in question 4 using any programming language (solved in `Python3`)
 
 # Terraform Lovers Unite
-- A role, with no permissions, which can be assumed by users within the same account (used template from Hashicorp https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role)
+- A role, with no permissions, which can be assumed by users within the same account (`aws_iam_role.tf`, referenced template from Hashicorp https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role)
 - A policy, allowing users / entities to assume the above role 
 - A group, with the above policy attached,
 - A user, belonging to the above group.
