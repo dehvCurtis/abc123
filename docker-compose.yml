@@ -2,11 +2,13 @@ version: "3"
 services:
   litecoin-core:
     build: .
+    env_file: .env
     command:
       -printtoconsole
       -regtest=1
   trivy:
     image: aquasec/trivy:latest
+    env_file: .env
     command:
       image
-      uphold/litecoin-core
+      krkn_litecoin-core_1
