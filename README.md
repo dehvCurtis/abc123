@@ -32,7 +32,8 @@ use the following to command to run litecoin and trivy scanner build
 
 # Extra Security
 1. Added to `.env` (incomplete)
-2. CVE Scan with `trivy` (created upon build, see `cve-findings.json)
+2. CVE Scan / Report with `trivy` (Incomplete)
 3. Verify docker image (added `export DOCKER_CONTENT_TRUST=1` to env vars)
 4. Signed image (incomplete)
 5. Image should be pulled from private repo
+6.
