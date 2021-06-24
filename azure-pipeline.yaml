@@ -1,0 +1,46 @@
+trigger:
+- develop
+
+pool: litecoin
+
+# params
+parameters:
+- name: dockerRegistry
+  displayName: Docker Registry
+  default: https://hub.docker.io
+  type: string
+- name: dockerRepository
+  displayName: Docker Repository
+  default: https://hub.docker.io
+  type: string
+- name: litecoinDockerImageURI
+  displayName: Docker image URI, with tag if specified
+  type: string
+- name: trivyDockerImageURI
+  displayName: Docker image URI, with tag if specified
+  type: string   
+
+# begin stages
+stages:
+- stage: Image_Build
+  displayName: "build docker image"
+  jobs:
+
+  # Docker Compose build
+  - job: DockerCompose@0
+    displayName: Build services
+    inputs:
+      action: Build services
+      azureContainerRegistry: $(dockerRegistry)
+      dockerComposeFile: docker-compose.yml
+
+    # Trivy Scan
+  - job: Bash
+    displayName: "Trivy Image Scan"
+    env:
+      IMAGE_URI: ${{ parameters.litecoinDockerImageURI}}
+    inputs:
+      targetType: inline
+      script: |
+          echo "Running trivy scan . . ."
+          trivy image -f json ${litecoinDockerImageURI} || true

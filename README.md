@@ -15,19 +15,24 @@ use the following to command to run litecoin and trivy scanner build
 
 # K8s FTW
 
-1. Write a Kubernetes StatefulSet to run the above, using persistent volume claims and resource limits.
+1. Write a Kubernetes StatefulSet to run the above, using persistent volume claims and resource limits. (incomplete)
 
-# Write a simple build and deployment pipeline
+# All the Continuouses
+1. Write a simple build and deployment pipeline (I don't have much exp with Travis or Jenkins, so I wrote an Azure Pipeline `azure-pipeline.yaml`)
+ 
 
 # Script Kiddies
 1. Source or come up with a text manipulation problem (Solved with `awk` and `sed`, see script-kiddies.sh)
     reference for awk: https://askubuntu.com/questions/20414/find-and-replace-text-within-a-file-using-commands
 
-# Script grown-ups
+# Script Grown-Ups
 1. Solve the problem in question 4 using any programming language (solved in `Python3`)
+
+# Terraform Lovers Unite
 
 # Extra Security
 1. Added to `.env` (incomplete)
 2. CVE Scan with `trivy` (created upon build, see `cve-findings.json)
 3. Verify docker image (added `export DOCKER_CONTENT_TRUST=1` to env vars)
 4. Signed image (incomplete)
+5. Image should be pulled from private repo
