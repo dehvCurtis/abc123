@@ -34,7 +34,7 @@ stages:
       azureContainerRegistry: $(dockerRegistry)
       dockerComposeFile: docker-compose.yml
 
-    # Trivy Scan
+  # Trivy Scan
   - job: Bash
     displayName: "Trivy Image Scan"
     env:
@@ -44,3 +44,14 @@ stages:
       script: |
           echo "Running trivy scan . . ."
           trivy image -f json ${litecoinDockerImageURI} || true
+
+  # Grype Scan
+  - job: Bash
+    displayName: "Grype Image Scan"
+    env:
+      IMAGE_URI: ${{ parameters.litecoinDockerImageURI}}
+    inputs:
+      targetType: inline
+      script: |
+          echo "Running trivy scan . . ."
+          grype -o json ${litecoinDockerImageURI} || true          

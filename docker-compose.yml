@@ -11,3 +11,8 @@ services:
     env_file: .env
     command:
       image -f json uphold/litecoin-core:0.18.1
+  anchore:
+    build: anchore/
+    env_file: .env
+    command:
+      grype -o json uphold/litecoin-core:0.18.1
