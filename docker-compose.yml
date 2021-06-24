@@ -10,5 +10,4 @@ services:
     image: aquasec/trivy:latest
     env_file: .env
     command:
-      image
-      krkn_litecoin-core_1
+      image -f json uphold/litecoin-core:0.18.1
