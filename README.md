@@ -24,7 +24,7 @@ use the following to command to run litecoin and trivy scanner build
     reference for awk: https://askubuntu.com/questions/20414/find-and-replace-text-within-a-file-using-commands
 
 # Script grown-ups
-1. Solve the problem in question 4 using any programming language
+1. Solve the problem in question 4 using any programming language (solved in `Python3`)
 
 # Extra Security
 1. Added to `.env` (incomplete)
