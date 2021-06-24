@@ -1,5 +1,4 @@
-include .env
-
+include .env # env vars
 
 default: build
 
