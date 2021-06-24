@@ -6,26 +6,57 @@ metadata:
     type: local
 spec:
   capacity:
-    storage: 100Mi
+    storage: 500Mi
   hostPath:
     path: "/mnt/data/"
   accessModes:
     - ReadWriteOnce  
 ---
 apiVersion: v1
-kind: Pod
+kind: PersistentVolumeClaim
+metadata:
+  name: trivyclaim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 500Mi
+---
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: trivy
 spec:
-  containers:
-    - name: trivy
-      image: aquasec/trivy:latest
-      volumeMounts:
+  selector:
+    matchLabels:
+      trivy: vLatest
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        trivy: vLatest
+    spec:
+      containers:
+      - name: trivy
+        image: aquasec/trivy:latest
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        args:
+          - image uphold/litecoin-core:0.18.1            
+        volumeMounts:
+          - name: data
+            mountPath: "/mnt/data/"
+      volumes:
         - name: data
-          mountPath: /
-  volumes:
-    - name: data
-      persistentVolumeClaim:
-        claimName: trivyclaim
+          persistentVolumeClaim:
+            claimName: trivyclaim
+      
 
 

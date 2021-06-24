@@ -1,41 +1,60 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: litecoin-core
+  labels:
+    type: local
+spec:
+  capacity:
+    storage: 5Gi
+  hostPath:
+    path: "/mnt/data/"
+  accessModes:
+    - ReadWriteOnce  
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: litecoin-core
+spec:
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 5Gi
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert
-    kompose.version: 1.22.0 (HEAD)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: litecoin-core
   name: litecoin-core
 spec:
-  replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: litecoin-core
-  strategy: {}
+      litecoin-core: v0.18.1
+  replicas: 1
   template:
     metadata:
-      annotations:
-        kompose.cmd: kompose convert
-        kompose.version: 1.22.0 (HEAD)
-      creationTimestamp: null
       labels:
-        io.kompose.service: litecoin-core
+        litecoin-core: v0.18.1        
     spec:
       containers:
-        - args:
-            - -printtoconsole
-            - -regtest=1
-          image: litecoin-core
-          resources:
-            requests:
-              memory: "64Mi"
-              cpu: "250m"
-            limits:
-              memory: "128Mi"
-              cpu: "500m"          
-          name: litecoin-core
-          resources: {}
-      restartPolicy: Always
-status: {}
+      - name: litecoin-core
+        image: uphold/litecoin-core:0.18.1
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        args:
+          - -printtoconsole
+          - -regtest=1
+        volumeMounts:
+          - name: data
+            mountPath: "/mnt/data/"
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: trivyclaim        
