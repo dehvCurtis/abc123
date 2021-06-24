@@ -4,3 +4,8 @@ services:
     command:
       -printtoconsole
       -regtest=1
+  trivy:
+    image: aquasec/trivy:latest
+    command:
+      image
+      uphold/litecoin-core
