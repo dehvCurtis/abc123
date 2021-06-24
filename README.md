@@ -8,7 +8,7 @@
 3. run as a normal user 
     `running as litecoin user`
 4. run without any modifiers
-    `Makefile` (incomplete)
+    `Makefile`
  - should run the daemon
     `handled by docker-compose.yml`
  - print its output to the console
