@@ -1,5 +1,5 @@
-resource "aws_iam_role" "krkn_role" {
-  name = "krkn_role"
+resource "aws_iam_role" "abc123_role" {
+  name = "abc123_role"
 
   assume_role_policy = jsonencode({ # jsonencode to convert to json
     Version = "2012-10-17"
@@ -15,6 +15,6 @@ resource "aws_iam_role" "krkn_role" {
   })
 
   tags = {
-    aws_iam_role = "krkn_role"
+    aws_iam_role = "abc123_role"
   }
 }
