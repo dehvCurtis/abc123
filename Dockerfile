@@ -5,6 +5,8 @@ RUN mkdir -p "$LITECOIN_DATA"
 RUN chmod 770 "$LITECOIN_DATA"
 RUN chown -R litecoin "$LITECOIN_DATA"
 
+RUN apt update -y
+
 # Run as a normal user
 USER litecoin
 

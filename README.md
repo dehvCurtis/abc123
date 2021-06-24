@@ -23,3 +23,7 @@ use the following to command to run litecoin and trivy scanner build
 # K8s FTW
 
 1. Write a Kubernetes StatefulSet to run the above, using persistent volume claims and resource limits.
+
+# Extra Security
+1. Added to `.env` (incomplete)
+2. CVE Scan with `trivy` (created upon build, see `cve-findings.json)
