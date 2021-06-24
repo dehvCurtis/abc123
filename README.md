@@ -23,6 +23,9 @@ use the following to command to run litecoin and trivy scanner build
 1. Source or come up with a text manipulation problem (Solved with `awk` and `sed`, see script-kiddies.sh)
     reference for awk: https://askubuntu.com/questions/20414/find-and-replace-text-within-a-file-using-commands
 
+# Script grown-ups
+1. Solve the problem in question 4 using any programming language
+
 # Extra Security
 1. Added to `.env` (incomplete)
 2. CVE Scan with `trivy` (created upon build, see `cve-findings.json)
