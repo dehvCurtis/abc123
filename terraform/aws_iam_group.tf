@@ -1,10 +1,10 @@
-resource "aws_iam_group" "krkn_devs" {
-  name = "krkn_devs"
+resource "aws_iam_group" "abc123_devs" {
+  name = "abc123_devs"
   path = "/developers/"
 }
 
-resource "aws_iam_policy" "krkn-policy" {
-  name        = "krkn-policy"
+resource "aws_iam_policy" "abc123-policy" {
+  name        = "abc123-policy"
   description = "policy decsription"
   policy      = aws_iam_policy
 }
