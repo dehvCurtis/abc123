@@ -7,13 +7,13 @@
 4. run without any modifiers (handled by `Makefile`)
  - should run the daemon (handled by `docker-compose.yml`)
  - print its output to the console (handled by `docker-compose.yml`)
-5. Build should be security conscious (added anchore grype and trivy scanner)
+5. Build should be security conscious (added anchore grype and trivy scanner. was having issues where grype would not recognize commands from `docker-compose`, so i stuffed them into a `Dockerfile` and called the file.)
 
 ### Use the following to command to run litecoin and trivy scanner build
 `make build`
 
 # K8s FTW
-1. Write a Kubernetes StatefulSet to run the above, using persistent volume claims and resource limits. (Complete. see `*-deployment.yaml`)
+1. Write a Kubernetes StatefulSet to run the above, using persistent volume claims and resource limits. (Complete. see `*-deployment.yaml`. Had difficulty with getting the PVC to work properly, used a friend for assistance.)
 
 # All the Continuouses
 1. Write a simple build and deployment pipeline (I don't have much exp with Travis or Jenkins, so I wrote an Azure Pipeline `azure-pipeline.yaml`)
@@ -26,6 +26,10 @@
 1. Solve the problem in question 4 using any programming language (solved in `Python3`)
 
 # Terraform Lovers Unite
+- A role, with no permissions, which can be assumed by users within the same account (used template from Hashicorp https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role)
+- A policy, allowing users / entities to assume the above role 
+- A group, with the above policy attached,
+- A user, belonging to the above group.
 
 # Extra Security
 1. Added `$DOCKER_CONTENT_TRUST` to `.env` file (validates image authenticity)
