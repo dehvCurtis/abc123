@@ -14,4 +14,4 @@
  - print its output to the console
     `handled by docker-compose.yml` 
 5. Build should be security conscious
-    `` (incomplete)
+    `added trivy scanner`
