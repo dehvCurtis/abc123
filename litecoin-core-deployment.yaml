@@ -28,6 +28,13 @@ spec:
             - -printtoconsole
             - -regtest=1
           image: litecoin-core
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"          
           name: litecoin-core
           resources: {}
       restartPolicy: Always
