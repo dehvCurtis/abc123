@@ -1,34 +1,31 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: PersistentVolume
 metadata:
-  annotations:
-    kompose.cmd: kompose convert
-    kompose.version: 1.22.0 (HEAD)
-  creationTimestamp: null
+  name: trivyclaim
   labels:
-    io.kompose.service: trivy
+    type: local
+spec:
+  capacity:
+    storage: 100Mi
+  hostPath:
+    path: "/mnt/data/"
+  accessModes:
+    - ReadWriteOnce  
+---
+apiVersion: v1
+kind: Pod
+metadata:
   name: trivy
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      io.kompose.service: trivy
-  strategy: {}
-  template:
-    metadata:
-      annotations:
-        kompose.cmd: kompose convert
-        kompose.version: 1.22.0 (HEAD)
-      creationTimestamp: null
-      labels:
-        io.kompose.service: trivy
-    spec:
-      containers:
-        - args:
-            - image
-            - uphold/litecoin-core
-          image: aquasec/trivy:latest
-          name: trivy
-          resources: {}
-      restartPolicy: Always
-status: {}
+  containers:
+    - name: trivy
+      image: aquasec/trivy:latest
+      volumeMounts:
+        - name: data
+          mountPath: /
+  volumes:
+    - name: data
+      persistentVolumeClaim:
+        claimName: trivyclaim
+
+

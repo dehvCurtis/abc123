@@ -13,7 +13,6 @@
 `make build`
 
 # K8s FTW
-
 1. Write a Kubernetes StatefulSet to run the above, using persistent volume claims and resource limits. (incomplete)
 
 # All the Continuouses
