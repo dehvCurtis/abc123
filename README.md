@@ -15,3 +15,7 @@
     `handled by docker-compose.yml` 
 5. Build should be security conscious
     `added trivy scanner`
+
+use the following to command to run litecoin and trivy scanner build
+
+`make build`
